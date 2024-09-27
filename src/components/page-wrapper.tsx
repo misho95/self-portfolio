@@ -22,12 +22,15 @@ const PageWrapper: FC<PageWrapperProps> = ({
   return (
     <main
       className={cn(
-        clsx("flex duration-500", {
-          "h-full overflow-auto": pathname === value && mobile,
-          "h-[80px]": pathname !== value && mobile,
-          "w-full": pathname === value && !mobile,
-          "w-[100px] sticky top-0 h-screen": pathname !== value && !mobile,
-        }),
+        clsx(
+          "flex duration-500 border-t-[2px] sm:border-l-[2px] border-black/20 dark:border-white/20",
+          {
+            "h-full overflow-auto": pathname === value && mobile,
+            "h-[80px]": pathname !== value && mobile,
+            "w-full": pathname === value && !mobile,
+            "w-[100px] sticky top-0 h-screen": pathname !== value && !mobile,
+          }
+        ),
         className
       )}
       {...props}
