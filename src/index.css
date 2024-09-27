@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-title {
+  writing-mode: vertical-rl;
+}
+
+@media only screen and (max-width: 640px) {
+  .custom-title {
+    writing-mode: horizontal-tb;
+  }
+}
