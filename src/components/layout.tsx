@@ -5,11 +5,11 @@ const Layout = () => {
   return (
     <>
       {/* desktop */}
-      <div className="hidden sm:flex min-h-screen">
+      <div className="hidden sm:flex min-h-screen font-mono">
         <RenderLinks />
       </div>
       {/* mobile */}
-      <div className="flex flex-col sm:hidden h-screen">
+      <div className="flex flex-col sm:hidden h-screen font-mono">
         <RenderLinks mobile />
       </div>
     </>
