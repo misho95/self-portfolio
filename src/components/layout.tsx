@@ -1,36 +1,28 @@
-import { NAV_LINKS } from "../utils/data";
-import PageWrapper from "./page-wrapper";
+import Header from "./header";
+import { animated, useSpring } from "@react-spring/web";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  return (
-    <>
-      {/* desktop */}
-      <div className="hidden sm:flex min-h-screen font-mono">
-        <RenderLinks />
-      </div>
-      {/* mobile */}
-      <div className="flex flex-col sm:hidden h-screen font-mono">
-        <RenderLinks mobile />
-      </div>
-    </>
-  );
-};
+  const animation = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    delay: 500,
+    config: {
+      duration: 2000,
+    },
+  });
 
-const RenderLinks = ({ mobile = false }: { mobile?: boolean }) => {
   return (
-    <>
-      {NAV_LINKS.map((nav) => {
-        return (
-          <PageWrapper
-            key={nav.id}
-            title={nav.title}
-            value={nav.url}
-            className={nav.className}
-            mobile={mobile}
-          />
-        );
-      })}
-    </>
+    <animated.div style={animation} className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1 flex justify-center items-center">
+        {<Outlet />}
+      </main>
+    </animated.div>
   );
 };
 
