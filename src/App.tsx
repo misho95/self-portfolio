@@ -1,35 +1,23 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LandingPage from "./pages/landing-page";
-import ProjectsPage from "./pages/projects-page";
-import Layout from "./components/layout";
-
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <LandingPage />,
-      },
-      {
-        path: "/projects",
-        element: <ProjectsPage />,
-      },
-      {
-        path: "/contact",
-        element: "contact",
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: "error 404",
-  },
-]);
+import Header from "./components/header";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Parallax pages={3} style={{ top: "0", left: "0" }}>
+      <ParallaxLayer sticky={{ start: 0, end: 3 }}>
+        <Header />
+      </ParallaxLayer>
+      <ParallaxLayer offset={0} speed={2.5}>
+        <p>Parallax</p>
+      </ParallaxLayer>
+      <ParallaxLayer offset={1} speed={2.5}>
+        <p>Parallax 2</p>
+      </ParallaxLayer>
+      <ParallaxLayer offset={2} speed={2.5}>
+        <p>Parallax 3</p>
+      </ParallaxLayer>
+    </Parallax>
+  );
 };
 
 export default App;
